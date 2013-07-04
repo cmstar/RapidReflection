@@ -110,4 +110,4 @@ can be written in this form:
 *In the current version, the extention methods does not include operations for all opcodes.*
 
 ## Tasks in the future
-- Allows specifying the types in the delegates, such as Func<TInstance, TRet> against Func<object, object>.
+- Allows specifying the types in the delegates, such as Func&lt;TInstance, TRet&gt; against Func&lt;object, object&gt;.
