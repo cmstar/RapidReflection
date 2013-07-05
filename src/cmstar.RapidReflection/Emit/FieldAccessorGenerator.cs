@@ -24,7 +24,7 @@ namespace cmstar.RapidReflection.Emit
         /// Creates a dynamic method for getting the value of the given field.
         /// </summary>
         /// <typeparam name="TSource">The type of the intance from which to get the value.</typeparam>
-        /// <typeparam name="TRet">The yype of the return value.</typeparam>
+        /// <typeparam name="TRet">The type of the return value.</typeparam>
         /// <param name="fieldInfo">
         /// The instance of <see cref="FieldInfo"/> from which the dynamic method would be created.
         /// </param>
@@ -33,27 +33,28 @@ namespace cmstar.RapidReflection.Emit
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="fieldInfo"/> is null.</exception>
         /// <exception cref="ArgumentException">
-        /// <typeparamref name="TSource"/> is not <see cref="object"/>, or from which 
-        /// the declaring type the field is not assignable.
+        /// <typeparamref name="TSource"/> is not <see cref="object"/>, and from which 
+        /// the declaring type of the field is not assignable.
         /// -or-
-        /// <typeparamref name="TRet"/> is not assignable from the field type.
+        /// <typeparamref name="TRet"/> is not assignable from the type of the field.
         /// </exception>
         public static Func<TSource, TRet> CreateGetter<TSource, TRet>(FieldInfo fieldInfo)
         {
             if (fieldInfo == null)
                 throw new ArgumentNullException("fieldInfo");
 
-            if (typeof(TSource) != typeof(object) && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(TSource)))
+            if (typeof(TSource) != typeof(object) 
+                && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(TSource)))
             {
                 throw new ArgumentException(
-                   "The field's declaring type is not assignable to the type of the instance.",
+                   "The field's declaring type is not assignable from the type of the instance.",
                    "fieldInfo");
             }
 
             if (!typeof(TRet).IsAssignableFrom(fieldInfo.FieldType))
             {
                 throw new ArgumentException(
-                    "The field type is not assignable to the type of the return value.",
+                    "The type of the return value is not assignable from the type of the field.",
                     "fieldInfo");
             }
 
@@ -100,10 +101,10 @@ namespace cmstar.RapidReflection.Emit
         /// <exception cref="ArgumentException">
         /// <typeparamref name="TTarget"/> is a value type.
         /// -or- 
-        /// <typeparamref name="TTarget"/> is not <see cref="object"/>, or from which 
+        /// <typeparamref name="TTarget"/> is not <see cref="object"/>, and from which 
         /// the declaring type of <paramref name="fieldInfo"/> is not assignable.
         /// -or-
-        /// <typeparamref name="TValue"/> is not <see cref="object"/>, or the type of field 
+        /// <typeparamref name="TValue"/> is not <see cref="object"/>, and the type of field 
         /// is not assignable from <typeparamref name="TValue"/>.
         /// </exception>
         /// <remarks>
@@ -133,7 +134,7 @@ namespace cmstar.RapidReflection.Emit
                 && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(TTarget)))
             {
                 throw new ArgumentException(
-                   "The field's declaring type is not assignable to type of the isntance.",
+                   "The declaring type of the field is not assignable from the type of the isntance.",
                    "fieldInfo");
             }
 
@@ -141,7 +142,7 @@ namespace cmstar.RapidReflection.Emit
                 && !fieldInfo.FieldType.IsAssignableFrom(typeof(TValue)))
             {
                 throw new ArgumentException(
-                    "The field type is not assignable to the type the value.",
+                    "The type of the field is not assignable from the type of the value.",
                     "fieldInfo");
             }
 
