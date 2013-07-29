@@ -2,6 +2,10 @@
 
 Simply accesses type memebers with dynamic methods created using Reflection.Emit.
 
+## Runtime
+The code can be compiled under .net Framework 3.5 or later versions.
+If you want to compile the code under .net Framework 2.0, a conditional compilation symbol named NET20 should be defined.
+
 ## Dynamic Methods
 The class for test
 
