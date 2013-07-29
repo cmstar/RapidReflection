@@ -41,6 +41,7 @@
     <Compile Include="Emit\MethodInvokerGenerator.cs" />
     <Compile Include="Emit\OpCodeExtention.cs" />
     <Compile Include="Emit\PropertyAccessorGenerator.cs" />
+    <Compile Include="Net20Support.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
