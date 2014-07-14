@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmstar.RapidReflection.Tests", "src\cmstar.RapidReflection.Tests\cmstar.RapidReflection.Tests.csproj", "{A6C8AFC5-89A3-47CF-A118-3700A2D07511}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmstar.RapidReflection", "src\cmstar.RapidReflection\cmstar.RapidReflection.csproj", "{ADB9D442-4747-48AD-BFC6-ABCCD398B33C}"
