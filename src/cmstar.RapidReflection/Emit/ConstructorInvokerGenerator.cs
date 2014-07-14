@@ -24,10 +24,10 @@ namespace cmstar.RapidReflection.Emit
                 throw new ArgumentNullException("type");
 
             if (type.IsInterface)
-                throw new ArgumentException("The type is an interface.", "type");
+                throw new ArgumentException(string.Format("{0} is an interface.", type), "type");
 
             if (type.IsAbstract)
-                throw new ArgumentException("The type is abstract.", "type");
+                throw new ArgumentException(string.Format("{0} is abstract.", type), "type");
 
             ConstructorInfo constructorInfo = null;
             if (type.IsClass)
@@ -36,7 +36,7 @@ namespace cmstar.RapidReflection.Emit
 
                 if (constructorInfo == null)
                     throw new ArgumentException(
-                        "The type does not have a public parameterless constructor.", "type");
+                        string.Format("{0} does not have a public parameterless constructor.", type), "type");
             }
 
             var dynamicMethod = EmitUtils.CreateDynamicMethod(
