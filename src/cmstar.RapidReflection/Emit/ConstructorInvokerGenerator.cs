@@ -130,13 +130,13 @@ namespace cmstar.RapidReflection.Emit
             {
                 var lableCheckArgumentsLength = il.DefineLabel();
 
-                // if (arguments == null) throw new ArgumentNullExcpeiton("arguments");
+                // if (arguments == null) throw new ArgumentNullException("arguments");
                 il.Ldarg_0();
                 il.Brtrue_S(lableCheckArgumentsLength);
 
                 il.ThrowArgumentsNullExcpetion("arguments");
 
-                // if (arguments.Length < $(args.Length)) throw new ArgumentExcpeiton(msg, "arguments");
+                // if (arguments.Length < $(args.Length)) throw new ArgumentNullException(msg, "arguments");
                 il.MarkLabel(lableCheckArgumentsLength);
                 il.Ldarg_0();
                 il.Ldlen();

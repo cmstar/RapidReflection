@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 namespace cmstar.RapidReflection.Emit
 {
     /// <summary>
-    /// Provides a set of extention methods for <see cref="ILGenerator"/>
+    /// Provides a set of extension methods for <see cref="ILGenerator"/>
     /// for emitting the <see cref="OpCode"/>s.
     /// </summary>
     public static class OpCodeExtention
@@ -128,7 +128,7 @@ namespace cmstar.RapidReflection.Emit
         /// Calls the method indicated by the passed method descriptor.
         /// </summary>
         /// <param name="il">The instance of <see cref="ILGenerator"/>.</param>
-        /// <param name="methodInfo">The mechod to call.</param>
+        /// <param name="methodInfo">The method to call.</param>
         /// <returns>The instance of <see cref="ILGenerator"/>.</returns>
         public static ILGenerator Call(this ILGenerator il, MethodInfo methodInfo)
         {
@@ -140,7 +140,7 @@ namespace cmstar.RapidReflection.Emit
         /// Calls a late-bound method on an object, pushing the return value onto the evaluation stack.
         /// </summary>
         /// <param name="il">The instance of <see cref="ILGenerator"/>.</param>
-        /// <param name="methodInfo">The mechod to call.</param>
+        /// <param name="methodInfo">The method to call.</param>
         /// <returns>The instance of <see cref="ILGenerator"/>.</returns>
         public static ILGenerator Callvirt(this ILGenerator il, MethodInfo methodInfo)
         {

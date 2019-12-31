@@ -23,7 +23,7 @@ namespace cmstar.RapidReflection.Emit
         /// <summary>
         /// Creates a dynamic method for getting the value of the given field.
         /// </summary>
-        /// <typeparam name="TSource">The type of the intance from which to get the value.</typeparam>
+        /// <typeparam name="TSource">The type of the instance from which to get the value.</typeparam>
         /// <typeparam name="TRet">The type of the return value.</typeparam>
         /// <param name="fieldInfo">
         /// The instance of <see cref="FieldInfo"/> from which the dynamic method would be created.
@@ -72,9 +72,9 @@ namespace cmstar.RapidReflection.Emit
         /// </returns>
         /// <exception cref="ArgumentNullException"><paramref name="fieldInfo"/> is null.</exception>
         /// <remarks>
-        /// In order to set a field on a value type succesfully, the value type must be boxed 
+        /// In order to set a field on a value type successfully, the value type must be boxed 
         /// in and <see cref="object"/>, and unboxed from the object after the dynamic
-        /// set mothod is called, e.g.
+        /// set method is called, e.g.
         /// <code>
         ///   object boxedStruct = new SomeStruct();
         ///   setter(s, "the value");
@@ -108,9 +108,9 @@ namespace cmstar.RapidReflection.Emit
         /// is not assignable from <typeparamref name="TValue"/>.
         /// </exception>
         /// <remarks>
-        /// In order to set a field on a value type succesfully, the value type must be boxed 
+        /// In order to set a field on a value type successfully, the value type must be boxed 
         /// in and <see cref="object"/>, and unboxed from the object after the dynamic
-        /// set mothod is called, e.g.
+        /// set method is called, e.g.
         /// <code>
         ///   object boxedStruct = new SomeStruct();
         ///   setter(s, "the value");

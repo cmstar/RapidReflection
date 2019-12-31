@@ -51,7 +51,7 @@ namespace cmstar.RapidReflection.Emit
         /// <summary>
         /// Creates a dynamic method for getting the value of the given property.
         /// </summary>
-        /// <typeparam name="TSource">The type of the intance from which to get the value.</typeparam>
+        /// <typeparam name="TSource">The type of the instance from which to get the value.</typeparam>
         /// <typeparam name="TRet">The type of the return value.</typeparam>
         /// <param name="propertyInfo">
         /// The instance of <see cref="PropertyInfo"/> from which the dynamic method would be created.
@@ -140,9 +140,9 @@ namespace cmstar.RapidReflection.Emit
         /// The set accessor method from the <paramref name="propertyInfo"/> cannot be retrieved.
         /// </exception>
         /// <remarks>
-        /// In order to set a property value on a value type succesfully, the value type must be boxed 
+        /// In order to set a property value on a value type successfully, the value type must be boxed 
         /// in and <see cref="object"/>, and unboxed from the object after the dynamic
-        /// set mothod is called, e.g.
+        /// set method is called, e.g.
         /// <code>
         ///   object boxedStruct = new SomeStruct();
         ///   setter(s, "the value");
@@ -173,9 +173,9 @@ namespace cmstar.RapidReflection.Emit
         /// The set accessor method from the <paramref name="propertyInfo"/> cannot be retrieved.
         /// </exception>
         /// <remarks>
-        /// In order to set a property value on a value type succesfully, the value type must be boxed 
+        /// In order to set a property value on a value type successfully, the value type must be boxed 
         /// in and <see cref="object"/>, and unboxed from the object after the dynamic
-        /// set mothod is called, e.g.
+        /// set method is called, e.g.
         /// <code>
         ///   object boxedStruct = new SomeStruct();
         ///   setter(s, "the value");
@@ -216,9 +216,9 @@ namespace cmstar.RapidReflection.Emit
         /// is not assignable from <typeparamref name="TValue"/>. 
         /// </exception>
         /// <remarks>
-        /// In order to set a property value on a value type succesfully, the value type must be boxed 
+        /// In order to set a property value on a value type successfully, the value type must be boxed 
         /// in and <see cref="object"/>, and unboxed from the object after the dynamic
-        /// set mothod is called, e.g.
+        /// set method is called, e.g.
         /// <code>
         ///   object boxedStruct = new SomeStruct();
         ///   setter(s, "the value");

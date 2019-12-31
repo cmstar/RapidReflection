@@ -9,7 +9,7 @@ namespace cmstar.RapidReflection.Emit
         /// Creates a dynamic method for invoking the method from the given <see cref="MethodInfo"/>.
         /// </summary>
         /// <param name="methodInfo">
-        /// The instance of <see cref="MemberInfo"/> from which the dyanmic method is to be created.
+        /// The instance of <see cref="MemberInfo"/> from which the dynamic method is to be created.
         /// </param>
         /// <returns>
         /// The delegate has two parameters: the first for the object instance (will be ignored 
@@ -28,7 +28,7 @@ namespace cmstar.RapidReflection.Emit
         /// and indicates whether to perform a arguments validation in the dynamic method.
         /// </summary>
         /// <param name="methodInfo">
-        /// The instance of <see cref="MemberInfo"/> from which the dyanmic method is to be created.
+        /// The instance of <see cref="MemberInfo"/> from which the dynamic method is to be created.
         /// </param>
         /// <param name="validateArguments">
         /// If <c>true</c>, the dynamic method will validate if the instance or the array of arguments 
@@ -70,7 +70,7 @@ namespace cmstar.RapidReflection.Emit
                 //check if the instance is null
                 if (!methodInfo.IsStatic)
                 {
-                    // if (instance == null) throw new ArgumentNullExcpeiton("instance");
+                    // if (instance == null) throw new ArgumentNullException("instance");
                     il.Ldarg_0();
                     il.Brtrue_S(args.Length > 0 ? lableCheckArgumentsRef : lableValidationCompleted);
 
@@ -80,14 +80,14 @@ namespace cmstar.RapidReflection.Emit
                 //check the arguments
                 if (args.Length > 0)
                 {
-                    // if (arguments == null) throw new ArgumentNullExcpeiton("arguments");
+                    // if (arguments == null) throw new ArgumentNullException("arguments");
                     il.MarkLabel(lableCheckArgumentsRef);
                     il.Ldarg_1();
                     il.Brtrue_S(lableCheckArgumentsLength);
 
                     il.ThrowArgumentsNullExcpetion("arguments");
 
-                    // if (arguments.Length < $(args.Length)) throw new ArgumentExcpeiton(msg, "arguments");
+                    // if (arguments.Length < $(args.Length)) throw new ArgumentNullException(msg, "arguments");
                     il.MarkLabel(lableCheckArgumentsLength);
                     il.Ldarg_1();
                     il.Ldlen();
