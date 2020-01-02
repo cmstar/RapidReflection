@@ -233,7 +233,7 @@ namespace cmstar.RapidReflection.Emit
             if (typeof(TTarget).IsValueType)
             {
                 throw new ArgumentException(
-                   "The type of the isntance should not be a value type. " +
+                   "The type of the instance should not be a value type. " +
                    "For a value type, use System.Object instead.",
                    "propertyInfo");
             }
@@ -249,7 +249,7 @@ namespace cmstar.RapidReflection.Emit
                 && !propertyInfo.DeclaringType.IsAssignableFrom(typeof(TTarget)))
             {
                 throw new ArgumentException(
-                   "The declaring type of the property is not assignable from the type of the isntance.",
+                   "The declaring type of the property is not assignable from the type of the instance.",
                    "propertyInfo");
             }
 
