@@ -1,5 +1,4 @@
-﻿// ReSharper disable ConvertToAutoProperty
-// ReSharper disable UnusedMember.Local
+﻿// ReSharper disable ConvertToAutoProperty,UnusedMember.Global,UnusedMember.Local,UnusedMemberInSuper.Global
 namespace cmstar.RapidReflection.Emit
 {
     internal interface IInternalInterface

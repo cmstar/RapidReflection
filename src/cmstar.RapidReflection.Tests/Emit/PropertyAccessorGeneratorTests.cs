@@ -15,6 +15,7 @@ namespace cmstar.RapidReflection.Emit
             Assert.AreEqual(c.PublicProp, getter(c));
 
             var propWithPrivateGetter = typeof(InternalClass).GetProperty("PropWithPrivateGetter");
+            Assert.NotNull(propWithPrivateGetter);
             var privateGetter = PropertyAccessorGenerator.CreateGetter(propWithPrivateGetter, true);
             Assert.AreEqual(propWithPrivateGetter.GetValue(c, null), privateGetter(c));
 
@@ -174,6 +175,7 @@ namespace cmstar.RapidReflection.Emit
             Assert.AreEqual(c.PublicProp, getter(c));
 
             var propWithPrivateGetter = typeof(InternalClass).GetProperty("PropWithPrivateGetter");
+            Assert.NotNull(propWithPrivateGetter);
             var privateGetter = PropertyAccessorGenerator.CreateGetter<InternalClass, int>(propWithPrivateGetter, true);
             Assert.AreEqual(propWithPrivateGetter.GetValue(c, null), privateGetter(c));
 

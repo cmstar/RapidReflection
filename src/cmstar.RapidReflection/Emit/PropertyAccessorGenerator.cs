@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace cmstar.RapidReflection.Emit
@@ -207,6 +208,7 @@ namespace cmstar.RapidReflection.Emit
                     nameof(propertyInfo));
             }
 
+            Debug.Assert(propertyInfo.DeclaringType != null, "propertyInfo.DeclaringType != null");
             if (typeof(TSource) != typeof(object)
                 && !propertyInfo.DeclaringType.IsAssignableFrom(typeof(TSource)))
             {
@@ -228,6 +230,7 @@ namespace cmstar.RapidReflection.Emit
             if (typeof(TSource).IsValueType && propertyInfo.DeclaringType.IsInterface)
             {
                 propertyInfo = typeof(TSource).GetProperty(propertyInfo.Name);
+                Debug.Assert(propertyInfo != null, nameof(propertyInfo) + " != null");
             }
 
             var getMethod = propertyInfo.GetGetMethod(nonPublic);
@@ -263,6 +266,7 @@ namespace cmstar.RapidReflection.Emit
                     nameof(propertyInfo));
             }
 
+            Debug.Assert(propertyInfo.DeclaringType != null, "propertyInfo.DeclaringType != null");
             if (typeof(TTarget) != typeof(object)
                 && !propertyInfo.DeclaringType.IsAssignableFrom(typeof(TTarget)))
             {

@@ -1,19 +1,22 @@
 ﻿using System;
 using NUnit.Framework;
 
-// ReSharper disable UnusedMember.Local
-// ReSharper disable UnusedParameter.Local
 namespace cmstar.RapidReflection.Emit
 {
     [TestFixture]
     public class ConstructorInvokerGeneratorTests
     {
+#pragma warning disable IDE0060 // Remove unused parameter
+        // ReSharper disable UnusedMember.Global,IdentifierTypo,UnusedMember.Local,UnusedParameter.Local
         private class InternalClassWithNoParameterlessConstructor
         {
             public InternalClassWithNoParameterlessConstructor(int i) { }
             public InternalClassWithNoParameterlessConstructor(int i, string s) { }
+
             public InternalClassWithNoParameterlessConstructor(int i, string s, double d) { }
         }
+        // ReSharper restore UnusedMember.Global,IdentifierTypo,UnusedMember.Local,UnusedParameter.Local
+#pragma warning restore IDE0060 // Remove unused parameter
 
         [Test]
         public void CreateDelegateFromType()

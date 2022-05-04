@@ -2,12 +2,13 @@
 using System.Reflection;
 using NUnit.Framework;
 
-// ReSharper disable UnusedMember.Local
 namespace cmstar.RapidReflection.Emit
 {
     [TestFixture]
     public class MethodInvokerGeneratorTests
     {
+#pragma warning disable IDE0051 // Remove unused private members
+        // ReSharper disable UnusedMember.Local,UnusedMember.Global
         private class InnerClass
         {
             public int Value;
@@ -16,6 +17,8 @@ namespace cmstar.RapidReflection.Emit
             private string StrFunc() { return string.Empty; }
             public static int StaticFunc(int x, int y) { return x + y; }
         }
+        // ReSharper restore UnusedMember.Local,UnusedMember.Global
+#pragma warning restore IDE0051 // Remove unused private members
 
         private class InnerClassDerived : InnerClass
         {

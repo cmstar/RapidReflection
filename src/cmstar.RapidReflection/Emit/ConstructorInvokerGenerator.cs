@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace cmstar.RapidReflection.Emit
@@ -122,6 +123,8 @@ namespace cmstar.RapidReflection.Emit
         private static Func<object[], object> DoCreateDelegate(ConstructorInfo constructorInfo, bool validateArguments)
         {
             var declaringType = constructorInfo.DeclaringType;
+            Debug.Assert(declaringType != null, nameof(declaringType) + " != null");
+
             if (declaringType.IsAbstract)
             {
                 throw new ArgumentException(

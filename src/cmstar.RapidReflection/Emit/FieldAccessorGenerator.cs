@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace cmstar.RapidReflection.Emit
@@ -120,6 +121,7 @@ namespace cmstar.RapidReflection.Emit
 
         private static Func<TSource, TRet> DoCreateGetter<TSource, TRet>(FieldInfo fieldInfo)
         {
+            Debug.Assert(fieldInfo.DeclaringType != null, "fieldInfo.DeclaringType != null");
             if (typeof(TSource) != typeof(object)
                 && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(TSource)))
             {
@@ -148,6 +150,7 @@ namespace cmstar.RapidReflection.Emit
                     nameof(fieldInfo));
             }
 
+            Debug.Assert(fieldInfo.DeclaringType != null, "fieldInfo.DeclaringType != null");
             if (typeof(TTarget) != typeof(object)
                 && !fieldInfo.DeclaringType.IsAssignableFrom(typeof(TTarget)))
             {
