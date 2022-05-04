@@ -14,7 +14,7 @@
     <Version>1.0.0</Version>
     <Authors>Eric Ruan</Authors>
     <Description>Simply accesses type memebers with dynamic methods created using Reflection.Emit.</Description>
-    <RespositoryType>git</RespositoryType>
+    <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/cmstar/RapidReflection.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/cmstar/RapidReflection</PackageProjectUrl>
     <PackageTags>reflection emit</PackageTags>
