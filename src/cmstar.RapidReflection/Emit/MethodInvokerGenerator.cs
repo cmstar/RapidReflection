@@ -47,7 +47,7 @@ namespace cmstar.RapidReflection.Emit
             MethodInfo methodInfo, bool validateArguments)
         {
             if (methodInfo == null)
-                throw new ArgumentNullException("methodInfo");
+                throw new ArgumentNullException(nameof(methodInfo));
 
             var identity = new { methodInfo, validateArguments };
             var method = (Func<object, object[], object>)DelegateCache.GetOrAdd(

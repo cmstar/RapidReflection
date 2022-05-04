@@ -76,7 +76,7 @@ namespace cmstar.RapidReflection.Emit
         public static Func<TSource, TRet> CreateGetter<TSource, TRet>(PropertyInfo propertyInfo, bool nonPublic)
         {
             if (propertyInfo == null)
-                throw new ArgumentNullException("propertyInfo");
+                throw new ArgumentNullException(nameof(propertyInfo));
 
             var identity = new { propertyInfo, nonPublic, sourceType = typeof(TSource), returnType = typeof(TRet) };
             var getter = (Func<TSource, TRet>)DelegateCache.GetOrAdd(
@@ -189,7 +189,7 @@ namespace cmstar.RapidReflection.Emit
         public static Action<TTarget, TValue> CreateSetter<TTarget, TValue>(PropertyInfo propertyInfo, bool nonPublic)
         {
             if (propertyInfo == null)
-                throw new ArgumentNullException("propertyInfo");
+                throw new ArgumentNullException(nameof(propertyInfo));
 
             var identity = new { propertyInfo, nonPublic, targetType = typeof(TTarget), valueType = typeof(TValue) };
             var setter = (Action<TTarget, TValue>)DelegateCache.GetOrAdd(
@@ -204,7 +204,7 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "Cannot create a dynamic getter for an indexed property.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             if (typeof(TSource) != typeof(object)
@@ -212,14 +212,14 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "The declaring type of the property is not assignable from the type of the instance.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             if (!typeof(TRet).IsAssignableFrom(propertyInfo.PropertyType))
             {
                 throw new ArgumentException(
                     "The type of the return value is not assignable from the type of the property.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             // the method call of the get accessor method fails in runtime 
@@ -236,11 +236,11 @@ namespace cmstar.RapidReflection.Emit
                 if (nonPublic)
                 {
                     throw new ArgumentException(
-                        "The property does not have a get method.", "propertyInfo");
+                        "The property does not have a get method.", nameof(propertyInfo));
                 }
 
                 throw new ArgumentException(
-                    "The property does not have a public get method.", "propertyInfo");
+                    "The property does not have a public get method.", nameof(propertyInfo));
             }
 
             return EmitPropertyGetter<TSource, TRet>(propertyInfo, getMethod);
@@ -253,14 +253,14 @@ namespace cmstar.RapidReflection.Emit
                 throw new ArgumentException(
                     "The type of the instance should not be a value type. " +
                     "For a value type, use System.Object instead.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             if (propertyInfo.GetIndexParameters().Length > 0)
             {
                 throw new ArgumentException(
                     "Cannot create a dynamic setter for an indexed property.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             if (typeof(TTarget) != typeof(object)
@@ -268,7 +268,7 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "The declaring type of the property is not assignable from the type of the instance.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             if (typeof(TValue) != typeof(object)
@@ -276,7 +276,7 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "The type of the property is not assignable from the type of the value.",
-                    "propertyInfo");
+                    nameof(propertyInfo));
             }
 
             var setMethod = propertyInfo.GetSetMethod(nonPublic);
@@ -285,11 +285,11 @@ namespace cmstar.RapidReflection.Emit
                 if (nonPublic)
                 {
                     throw new ArgumentException(
-                        "The property does not have a set method.", "propertyInfo");
+                        "The property does not have a set method.", nameof(propertyInfo));
                 }
 
                 throw new ArgumentException(
-                    "The property does not have a public set method.", "propertyInfo");
+                    "The property does not have a public set method.", nameof(propertyInfo));
             }
 
             return EmitPropertySetter<TTarget, TValue>(propertyInfo, setMethod);

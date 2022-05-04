@@ -21,7 +21,7 @@ namespace cmstar.RapidReflection.Emit
         public static Func<object> CreateDelegate(Type type)
         {
             if (type == null)
-                throw new ArgumentNullException("type");
+                throw new ArgumentNullException(nameof(type));
 
             var constructor = (Func<object>)DelegateCache.GetOrAdd(type, x => DoCreateDelegate(type));
             return constructor;
@@ -70,7 +70,7 @@ namespace cmstar.RapidReflection.Emit
         public static Func<object[], object> CreateDelegate(ConstructorInfo constructorInfo, bool validateArguments)
         {
             if (constructorInfo == null)
-                throw new ArgumentNullException("constructorInfo");
+                throw new ArgumentNullException(nameof(constructorInfo));
 
             var identity = new { constructorInfo, validateArguments };
             var constructor = (Func<object[], object>)DelegateCache.GetOrAdd(
@@ -82,10 +82,10 @@ namespace cmstar.RapidReflection.Emit
         private static Func<object> DoCreateDelegate(Type type)
         {
             if (type.IsInterface)
-                throw new ArgumentException("The type is an interface.", "type");
+                throw new ArgumentException("The type is an interface.", nameof(type));
 
             if (type.IsAbstract)
-                throw new ArgumentException("The type is abstract.", "type");
+                throw new ArgumentException("The type is abstract.", nameof(type));
 
             ConstructorInfo constructorInfo = null;
             if (type.IsClass)
@@ -94,7 +94,7 @@ namespace cmstar.RapidReflection.Emit
 
                 if (constructorInfo == null)
                     throw new ArgumentException(
-                        "The type does not have a public parameterless constructor.", "type");
+                        "The type does not have a public parameterless constructor.", nameof(type));
             }
 
             var dynamicMethod = EmitUtils.CreateDynamicMethod(
@@ -125,7 +125,7 @@ namespace cmstar.RapidReflection.Emit
             if (delclaringType.IsAbstract)
             {
                 throw new ArgumentException(
-                    "The declaring type of the constructor is abstract.", "constructorInfo");
+                    "The declaring type of the constructor is abstract.", nameof(constructorInfo));
             }
 
             var dynamicMethod = EmitUtils.CreateDynamicMethod(

@@ -72,7 +72,7 @@ namespace cmstar.RapidReflection.Emit
         public static ILGenerator CallMethod(this ILGenerator il, MethodInfo methodInfo)
         {
             if (methodInfo == null)
-                throw new ArgumentNullException("methodInfo");
+                throw new ArgumentNullException(nameof(methodInfo));
 
             if (methodInfo.IsVirtual)
             {
@@ -130,7 +130,8 @@ namespace cmstar.RapidReflection.Emit
         public static ILGenerator LoadArgument(this ILGenerator il, short index)
         {
             if (index < 0)
-                throw new ArgumentOutOfRangeException("index", "The index should not be less than zero.");
+                throw new ArgumentOutOfRangeException(
+                    nameof(index), "The index should not be less than zero.");
 
             switch (index)
             {
@@ -163,7 +164,8 @@ namespace cmstar.RapidReflection.Emit
         public static ILGenerator LoadArgumentAddress(this ILGenerator il, short index)
         {
             if (index < 0)
-                throw new ArgumentOutOfRangeException("index", "The index should not be less than zero.");
+                throw new ArgumentOutOfRangeException(
+                    nameof(index), "The index should not be less than zero.");
 
             if (index <= byte.MaxValue)
             {
@@ -222,7 +224,8 @@ namespace cmstar.RapidReflection.Emit
         public static ILGenerator LoadLocalVariable(this ILGenerator il, short index)
         {
             if (index < 0)
-                throw new ArgumentOutOfRangeException("index", "The index should not be less than zero.");
+                throw new ArgumentOutOfRangeException(
+                    nameof(index), "The index should not be less than zero.");
 
             switch (index)
             {
@@ -255,7 +258,8 @@ namespace cmstar.RapidReflection.Emit
         public static ILGenerator LoadLocalVariableAddress(this ILGenerator il, short index)
         {
             if (index < 0)
-                throw new ArgumentOutOfRangeException("index", "The index should not be less than zero.");
+                throw new ArgumentOutOfRangeException(
+                    nameof(index), "The index should not be less than zero.");
 
             if (index <= byte.MaxValue)
             {

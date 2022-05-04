@@ -41,7 +41,7 @@ namespace cmstar.RapidReflection.Emit
         public static Func<TSource, TRet> CreateGetter<TSource, TRet>(FieldInfo fieldInfo)
         {
             if (fieldInfo == null)
-                throw new ArgumentNullException("fieldInfo");
+                throw new ArgumentNullException(nameof(fieldInfo));
 
             var identity = new { fieldInfo, sourceType = typeof(TSource), returnType = typeof(TRet) };
             var getter = (Func<TSource, TRet>)DelegateCache.GetOrAdd(
@@ -109,7 +109,7 @@ namespace cmstar.RapidReflection.Emit
         public static Action<TTarget, TValue> CreateSetter<TTarget, TValue>(FieldInfo fieldInfo)
         {
             if (fieldInfo == null)
-                throw new ArgumentNullException("fieldInfo");
+                throw new ArgumentNullException(nameof(fieldInfo));
 
             var identity = new { fieldInfo, targetType = typeof(TTarget), valueType = typeof(TValue) };
             var setter = (Action<TTarget, TValue>)DelegateCache.GetOrAdd(
@@ -125,14 +125,14 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "The field's declaring type is not assignable from the type of the instance.",
-                    "fieldInfo");
+                    nameof(fieldInfo));
             }
 
             if (!typeof(TRet).IsAssignableFrom(fieldInfo.FieldType))
             {
                 throw new ArgumentException(
                     "The type of the return value is not assignable from the type of the field.",
-                    "fieldInfo");
+                    nameof(fieldInfo));
             }
 
             return EmitFieldGetter<TSource, TRet>(fieldInfo);
@@ -145,7 +145,7 @@ namespace cmstar.RapidReflection.Emit
                 throw new ArgumentException(
                     "The type of the instance should not be a value type. " +
                     "For a value type, use System.Object instead.",
-                    "fieldInfo");
+                    nameof(fieldInfo));
             }
 
             if (typeof(TTarget) != typeof(object)
@@ -153,7 +153,7 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "The declaring type of the field is not assignable from the type of the instance.",
-                    "fieldInfo");
+                    nameof(fieldInfo));
             }
 
             if (typeof(TValue) != typeof(object)
@@ -161,7 +161,7 @@ namespace cmstar.RapidReflection.Emit
             {
                 throw new ArgumentException(
                     "The type of the field is not assignable from the type of the value.",
-                    "fieldInfo");
+                    nameof(fieldInfo));
             }
 
             return EmitFieldSetter<TTarget, TValue>(fieldInfo);
