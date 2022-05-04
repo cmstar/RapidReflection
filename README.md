@@ -2,11 +2,13 @@
 
 Simply accesses type memebers with dynamic methods created using Reflection.Emit.
 
-## Runtime
-The code can be compiled under .net Framework 3.5 or later versions.
-If you want to compile the code under .net Framework 2.0, a conditional compilation symbol named NET20 should be defined.
+Supported .net versions:
+- .net Framework 3.5
+- .net Framework 4.x
+- Other versions that are compliant with .net Standard 2.0, such as .net Core 2/3, .net 5/6
 
-## Dynamic Methods
+## Usage
+
 The class for test
 
     class TestClass
@@ -53,8 +55,8 @@ The class for test
 
 For static property/field access, use *null* as the first argument:
 
-	getter(null);
-	setter(null, value);
+    getter(null);
+    setter(null, value);
 
 
 ### Constructor Invoking
@@ -71,7 +73,7 @@ For static property/field access, use *null* as the first argument:
 or use the parameterless constructor directly:
 
     Func<object> func 
-		= ConstructorInvokerGenerator.CreateDelegate(typeof(TestClass));
+        = ConstructorInvokerGenerator.CreateDelegate(typeof(TestClass));
     TestClass instance = (TestClass)func();
 
 
@@ -99,6 +101,7 @@ If the method has no argument, either is OK:
 If the method has no return value, the delegate returns null.
 
 ## Extention Methods
+
 A set of extention methods is provided so the code below
 
     ILGenerator il = dynamicMethod.GetILGenerator();
@@ -112,6 +115,3 @@ can be written in this form:
     il.Ldarg_0().Ldlen().Conv_I4();
 
 *In the current version, the extention methods does not include operations for all opcodes.*
-
-## Tasks in the future
-- Allows specifying the types in the delegates, such as Func&lt;TInstance, TRet&gt; against Func&lt;object, object&gt;.
