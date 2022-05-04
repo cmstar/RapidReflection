@@ -66,49 +66,49 @@ namespace cmstar.RapidReflection.Emit
                 methodInfo.DeclaringType);
             var il = dynamicMethod.GetILGenerator();
 
-            var lableValidationCompleted = il.DefineLabel();
+            var labelValidationCompleted = il.DefineLabel();
             if (!validateArguments || (methodInfo.IsStatic && args.Length == 0))
             {
-                il.Br_S(lableValidationCompleted); //does not need validation
+                il.Br_S(labelValidationCompleted); //does not need validation
             }
             else
             {
-                var lableCheckArgumentsRef = il.DefineLabel();
-                var lableCheckArgumentsLength = il.DefineLabel();
+                var labelCheckArgumentsRef = il.DefineLabel();
+                var labelCheckArgumentsLength = il.DefineLabel();
 
                 //check if the instance is null
                 if (!methodInfo.IsStatic)
                 {
                     // if (instance == null) throw new ArgumentNullException("instance");
                     il.Ldarg_0();
-                    il.Brtrue_S(args.Length > 0 ? lableCheckArgumentsRef : lableValidationCompleted);
+                    il.Brtrue_S(args.Length > 0 ? labelCheckArgumentsRef : labelValidationCompleted);
 
-                    il.ThrowArgumentsNullExcpetion("instance");
+                    il.ThrowArgumentsNullException("instance");
                 }
 
                 //check the arguments
                 if (args.Length > 0)
                 {
                     // if (arguments == null) throw new ArgumentNullException("arguments");
-                    il.MarkLabel(lableCheckArgumentsRef);
+                    il.MarkLabel(labelCheckArgumentsRef);
                     il.Ldarg_1();
-                    il.Brtrue_S(lableCheckArgumentsLength);
+                    il.Brtrue_S(labelCheckArgumentsLength);
 
-                    il.ThrowArgumentsNullExcpetion("arguments");
+                    il.ThrowArgumentsNullException("arguments");
 
                     // if (arguments.Length < $(args.Length)) throw new ArgumentNullException(msg, "arguments");
-                    il.MarkLabel(lableCheckArgumentsLength);
+                    il.MarkLabel(labelCheckArgumentsLength);
                     il.Ldarg_1();
                     il.Ldlen();
                     il.Conv_I4();
                     il.LoadInt32(args.Length);
-                    il.Bge_S(lableValidationCompleted);
+                    il.Bge_S(labelValidationCompleted);
 
-                    il.ThrowArgumentsExcpetion("Not enough arguments in the argument array.", "arguments");
+                    il.ThrowArgumentsException("Not enough arguments in the argument array.", "arguments");
                 }
             }
 
-            il.MarkLabel(lableValidationCompleted);
+            il.MarkLabel(labelValidationCompleted);
             if (!methodInfo.IsStatic)
             {
                 il.Ldarg_0();

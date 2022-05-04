@@ -8,7 +8,7 @@ namespace cmstar.RapidReflection.Emit
     /// Provides a set of extension methods for <see cref="ILGenerator"/>
     /// for emitting the <see cref="OpCode"/>s.
     /// </summary>
-    public static class OpCodeExtention
+    public static class OpCodeExtension
     {
         /// <summary>
         /// Transfers control to a target instruction if the first value is greater than

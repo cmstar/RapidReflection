@@ -121,48 +121,48 @@ namespace cmstar.RapidReflection.Emit
 
         private static Func<object[], object> DoCreateDelegate(ConstructorInfo constructorInfo, bool validateArguments)
         {
-            var delclaringType = constructorInfo.DeclaringType;
-            if (delclaringType.IsAbstract)
+            var declaringType = constructorInfo.DeclaringType;
+            if (declaringType.IsAbstract)
             {
                 throw new ArgumentException(
                     "The declaring type of the constructor is abstract.", nameof(constructorInfo));
             }
 
             var dynamicMethod = EmitUtils.CreateDynamicMethod(
-                "$Create" + delclaringType.Name,
+                "$Create" + declaringType.Name,
                 typeof(object),
                 new[] { typeof(object[]) },
                 constructorInfo.DeclaringType);
             var il = dynamicMethod.GetILGenerator();
 
             var args = constructorInfo.GetParameters();
-            var lableValidationCompleted = il.DefineLabel();
+            var labelValidationCompleted = il.DefineLabel();
             if (!validateArguments || args.Length == 0)
             {
-                il.Br_S(lableValidationCompleted);
+                il.Br_S(labelValidationCompleted);
             }
             else
             {
-                var lableCheckArgumentsLength = il.DefineLabel();
+                var labelCheckArgumentsLength = il.DefineLabel();
 
                 // if (arguments == null) throw new ArgumentNullException("arguments");
                 il.Ldarg_0();
-                il.Brtrue_S(lableCheckArgumentsLength);
+                il.Brtrue_S(labelCheckArgumentsLength);
 
-                il.ThrowArgumentsNullExcpetion("arguments");
+                il.ThrowArgumentsNullException("arguments");
 
                 // if (arguments.Length < $(args.Length)) throw new ArgumentNullException(msg, "arguments");
-                il.MarkLabel(lableCheckArgumentsLength);
+                il.MarkLabel(labelCheckArgumentsLength);
                 il.Ldarg_0();
                 il.Ldlen();
                 il.Conv_I4();
                 il.LoadInt32(args.Length);
-                il.Bge_S(lableValidationCompleted);
+                il.Bge_S(labelValidationCompleted);
 
-                il.ThrowArgumentsExcpetion("Not enough arguments in the argument array.", "arguments");
+                il.ThrowArgumentsException("Not enough arguments in the argument array.", "arguments");
             }
 
-            il.MarkLabel(lableValidationCompleted);
+            il.MarkLabel(labelValidationCompleted);
             if (args.Length > 0)
             {
                 for (int i = 0; i < args.Length; i++)

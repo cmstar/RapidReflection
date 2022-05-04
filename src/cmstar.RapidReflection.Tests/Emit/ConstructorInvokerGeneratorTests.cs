@@ -33,7 +33,7 @@ namespace cmstar.RapidReflection.Emit
         }
 
         [Test]
-        public void CreateDelegateFromContructorInfoForClass()
+        public void CreateDelegateFromConstructorInfoForClass()
         {
             var ctor = typeof(InternalClass).GetConstructor(Type.EmptyTypes);
             var func = ConstructorInvokerGenerator.CreateDelegate(ctor);
@@ -57,7 +57,7 @@ namespace cmstar.RapidReflection.Emit
         }
 
         [Test]
-        public void CreateDelegateFromContructorInfoForClassThrowsException()
+        public void CreateDelegateFromConstructorInfoForClassThrowsException()
         {
             var ctor = typeof(InternalClassWithNoParameterlessConstructor)
                 .GetConstructor(new[] { typeof(int) });

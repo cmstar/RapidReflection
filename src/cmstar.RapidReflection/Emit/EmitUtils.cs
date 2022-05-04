@@ -279,7 +279,7 @@ namespace cmstar.RapidReflection.Emit
         /// <param name="il">The instance of <see cref="ILGenerator"/>.</param>
         /// <param name="paramName">The parameter name used to initialize the exception instance.</param>
         /// <returns>The instance of <see cref="ILGenerator"/>.</returns>
-        public static ILGenerator ThrowArgumentsNullExcpetion(this ILGenerator il, string paramName)
+        public static ILGenerator ThrowArgumentsNullException(this ILGenerator il, string paramName)
         {
             il.Ldstr(paramName);
             il.Newobj(typeof(ArgumentNullException).GetConstructor(new[] { typeof(string) }));
@@ -295,7 +295,7 @@ namespace cmstar.RapidReflection.Emit
         /// <param name="message">The message.</param>
         /// <param name="paramName">The parameter name.</param>
         /// <returns>The instance of <see cref="ILGenerator"/>.</returns>
-        public static ILGenerator ThrowArgumentsExcpetion(this ILGenerator il, string message, string paramName)
+        public static ILGenerator ThrowArgumentsException(this ILGenerator il, string message, string paramName)
         {
             il.Ldstr(message);
             il.Ldstr(paramName);

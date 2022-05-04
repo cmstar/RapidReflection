@@ -24,7 +24,7 @@ namespace cmstar.RapidReflection.Emit
         }
 
         [Test]
-        public void CallInsntaceMethods()
+        public void CallInstanceMethods()
         {
             var mAct = typeof(InnerClass).GetMethod("Act");
             var act = MethodInvokerGenerator.CreateDelegate(mAct);
