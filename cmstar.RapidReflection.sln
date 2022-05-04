@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmstar.RapidReflection.Tests", "src\cmstar.RapidReflection.Tests\cmstar.RapidReflection.Tests.csproj", "{A6C8AFC5-89A3-47CF-A118-3700A2D07511}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cmstar.RapidReflection.Tests", "src\cmstar.RapidReflection.Tests\cmstar.RapidReflection.Tests.csproj", "{A6C8AFC5-89A3-47CF-A118-3700A2D07511}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cmstar.RapidReflection", "src\cmstar.RapidReflection\cmstar.RapidReflection.csproj", "{ADB9D442-4747-48AD-BFC6-ABCCD398B33C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cmstar.RapidReflection", "src\cmstar.RapidReflection\cmstar.RapidReflection.csproj", "{ADB9D442-4747-48AD-BFC6-ABCCD398B33C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{A2CAC404-1D6C-4804-96AC-AFCD0A09057C}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +45,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95A430A0-5C31-4220-9681-F728CA8ACC38}
 	EndGlobalSection
 EndGlobal
